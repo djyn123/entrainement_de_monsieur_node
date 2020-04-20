@@ -15,70 +15,22 @@ const personnage =
         this.inventaire.forEach(objet => {
             console.log(objet);
         })
+        return 0
     },
-    smallest(st1, st2)
-    {
-        let great = false;
-        let index = 0;
-        let plus_court_mot;
-        let shortest = (a,b)=>{
-            if(a.length > b.length)
-            {
-                plus_court_mot = b;
-                return b.length;
-            }
-            else{
-                plus_court_mot = a;
-                return a.length;
-            }
-        }
-        shortest(st1,st2)
-        let plus_petit;
-        if(isNaN(st1) && isNaN(st2))
-        {
-            while(great == false || indice < shortest )
-            {
-               if(st1[index] < st2[index])
-               {
-                   plus_petit = st1;
-                   great = true;
-               }
-               else if(st1[index] > st2[index])
-               {
-                   plus_petit = st2;
-                   great = true;
-               } 
-               else{
-                   index ++;
-               }
-            }
-            if(indice == shortest)
-            {
-                return plus_court_mot;
-            }
-            else{
-                return plus_petit;
-            }
-            
-        }
-        else{
-            return 0
-        }      
-    },
-
+    
     trier()
     {
-        let inventaire_bis = [];
         for(let a = 0; a < this.inventaire.length;a++)
         {
             for(let b = 0; b < this.inventaire.length;b++)
             {
-                inventaire_bis[a] = this.smallest(this.inventaire[a],this.inventaire[b]);
-            }
-        }
-        for(let a = 0; a < this.inventaire.length;a++)
-        {
-            this.inventaire[a] = inventaire_bis[a];
+                if(this.inventaire[a].charCodeAt(0) > this.inventaire[b].charCodeAt(0))
+                {
+                    temp = this.inventaire[a];
+                    this.inventaire[a] = this.inventaire[b];
+                    this.inventaire[b] = temp;
+                }    
+             }
         }
     }
 };
